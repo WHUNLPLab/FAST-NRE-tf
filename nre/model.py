@@ -20,6 +20,7 @@ class Model(object):
         self.input_pos1 = tf.placeholder(dtype=tf.int32, shape=[None, FLAGS.num_steps], name='input_pos1')
         self.input_pos2 = tf.placeholder(dtype=tf.int32, shape=[None, FLAGS.num_steps], name='input_pos2')
         self.input_type = tf.placeholder(dtype=tf.int32, shape=[None, FLAGS.num_steps], name='input_type')
+        self.input_lens = tf.placeholder(dtype=tf.int32, shape=[None, 1], name='input_lens')
         self.input_mask = tf.placeholder(dtype=tf.int32, shape=[None, FLAGS.num_steps], name='input_mask')
         self.input_scope = tf.placeholder(dtype=tf.int32, shape=[FLAGS.batch_size+1], name='input_scope')
         self.label = tf.placeholder(dtype=tf.int32, shape=[None], name='label')

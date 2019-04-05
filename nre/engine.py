@@ -106,6 +106,7 @@ class Engine(object):
             model.input_pos1: batch.pos1,
             model.input_pos2: batch.pos2,
             model.input_type: batch.type,
+            model.input_lens: batch.lens,
             model.input_mask: batch.mask, 
             model.input_scope: batch.scope,
             model.label:  batch.label,
@@ -130,7 +131,7 @@ class Engine(object):
         pos2_batch = dataset.sen_pos2[indexs, :]
         type_batch = dataset.sen_type[indexs, :]
         mask_batch = dataset.sen_mask[indexs, :]
-        len_batch = dataset.sen_len[indexs]
+        lens_batch = dataset.sen_len[indexs]
         
         # Ten elements
         batch = Batch(
@@ -139,7 +140,7 @@ class Engine(object):
             pos2 = pos2_batch,
             type = type_batch,
             mask = mask_batch,
-            len = len_batch,
+            lens = lens_batch,
             label = label,
             label_for_select = label_for_select,
             scope = np.array(scope),

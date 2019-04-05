@@ -241,7 +241,7 @@ class DataInitializer(object):
             if en1pos < fixlen:
                 sen_type[s][en1pos] = type2id[content[4]]
             if en2pos < fixlen:
-                sen_type[en2pos] = type2id[content[5]]
+                sen_type[s][en2pos] = type2id[content[5]]
             
             sen_len[s] = min(fixlen, len(sentence))
             sen_label[s] = relation
@@ -305,6 +305,8 @@ class DataInitializer(object):
             en2 = content[3]
             en1_id = content[0]
             en2_id = content[1]
+            en1_type = content[4]
+            en2_type = content[5]
             sentence = content[7:-1]
             relation = 0
             if content[6] not in relation2id:
@@ -359,7 +361,7 @@ class DataInitializer(object):
             if en1pos < fixlen:
                 sen_type[s][en1pos] = type2id[en1_type]
             if en2pos < fixlen:
-                sen_type[en2pos] = type2id[en2_type]
+                sen_type[s][en2pos] = type2id[en2_type]
 
             sen_len[s] = min(fixlen, len(sentence))
             sen_label[s] = relation
